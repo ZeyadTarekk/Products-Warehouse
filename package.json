@@ -1,0 +1,35 @@
+{
+  "name": "productassignment",
+  "version": "1.0.0",
+  "description": "product api",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test",
+    "migrateup": "db-migrate up -c 5",
+    "migratedown": "db-migrate down -c 5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZeyadTarekk/ProductAssignment.git"
+  },
+  "author": "zeyad tarek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZeyadTarekk/ProductAssignment/issues"
+  },
+  "homepage": "https://github.com/ZeyadTarekk/ProductAssignment#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.8.0"
+  },
+  "devDependencies": {
+    "db-migrate": "^0.11.13",
+    "db-migrate-pg": "^1.2.2",
+    "nodemon": "^2.0.20"
+  }
+}
