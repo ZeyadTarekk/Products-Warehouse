@@ -14,3 +14,13 @@ export function verifyAuthToken(req, res, next) {
     });
   }
 }
+
+export function verifySameCustomer(req, res, next) {
+  console.log(req.payload);
+  console.log(req.params.customerId);
+  if (req.payload.userId !== parseInt(req.params.customerId)) {
+    res.status(401).json({ error: "Unathorized access" });
+  } else {
+    next();
+  }
+}
