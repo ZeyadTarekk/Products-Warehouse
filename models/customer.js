@@ -55,6 +55,14 @@ class Customer {
     connection.release();
     return result.rows[0];
   }
+
+  static async getCustomers() {
+    const sql = "SELECT * FROM customers;";
+    const connection = await Client.connect();
+    const result = await connection.query(sql);
+    connection.release();
+    return result.rows;
+  }
 }
 
 export default Customer;

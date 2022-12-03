@@ -22,4 +22,10 @@ customerRouter.get(
   customerController.getCustomer
 );
 
+customerRouter.get(
+  "/customer",
+  verifyAuthToken,
+  customerController.getCustomers
+);
+
 export default customerRouter;
