@@ -1,6 +1,7 @@
 import express from "express";
 import { body } from "express-validator";
 import customerController from "../controllers/customerController.js";
+import { verifyAuthToken } from "../middleware/verifyAuthToken.js";
 const customerRouter = express.Router();
 
 customerRouter.post(
@@ -13,6 +14,12 @@ customerRouter.post(
   body("lat", "lat is required").notEmpty().trim(),
   body("long", "long is required").notEmpty().trim(),
   customerController.createCustomer
+);
+
+customerRouter.get(
+  "/customer/:customerId",
+  verifyAuthToken,
+  customerController.getCustomer
 );
 
 export default customerRouter;

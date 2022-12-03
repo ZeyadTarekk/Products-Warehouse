@@ -42,6 +42,19 @@ class Customer {
       throw err;
     }
   }
+
+  static async getCustomerById(customerId) {
+    const sql = "SELECT * FROM customers WHERE id = ($1);";
+    const connection = await Client.connect();
+    const result = await connection.query(sql, [customerId]);
+    if (result.rowCount === 0) {
+      const error = new Error("Customer not found");
+      error.statusCode = 404;
+      throw error;
+    }
+    connection.release();
+    return result.rows[0];
+  }
 }
 
 export default Customer;
