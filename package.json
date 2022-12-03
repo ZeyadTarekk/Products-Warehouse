@@ -2,11 +2,13 @@
   "name": "productassignment",
   "version": "1.0.0",
   "description": "product api",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "npm run test",
     "migrateup": "db-migrate up -c 5",
-    "migratedown": "db-migrate down -c 5"
+    "migratedown": "db-migrate down -c 5",
+    "dev":"nodemon index.js"
   },
   "repository": {
     "type": "git",
