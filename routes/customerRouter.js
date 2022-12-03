@@ -1,7 +1,10 @@
 import express from "express";
 import { body } from "express-validator";
 import customerController from "../controllers/customerController.js";
-import { verifyAuthToken } from "../middleware/verifyAuthToken.js";
+import {
+  verifyAuthToken,
+  verifySameCustomer,
+} from "../middleware/verifyAuthToken.js";
 const customerRouter = express.Router();
 
 customerRouter.post(
@@ -32,6 +35,13 @@ customerRouter.delete(
   "/customer/:customerId",
   verifyAuthToken,
   customerController.deleteCustomer
+);
+
+customerRouter.put(
+  "/customer/:customerId",
+  verifyAuthToken,
+  verifySameCustomer,
+  customerController.updateCustomer
 );
 
 export default customerRouter;

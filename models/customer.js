@@ -77,6 +77,33 @@ class Customer {
     connection.release();
     return result.rows;
   }
+
+  static async updateCustomer(id, name, email, phone, city, lat, long) {
+    try {
+      const sql =
+        "UPDATE customers SET name = ($1), email = ($2), phone = ($3), city = ($4), lat = ($5), long = ($6), location = point(($7),($8)) WHERE id = ($9) RETURNING *;";
+      const connection = await Client.connect();
+      const result = await connection.query(sql, [
+        name,
+        email,
+        phone,
+        city,
+        lat,
+        long,
+        lat,
+        long,
+        id,
+      ]);
+      const updatedUser = result.rows[0];
+      connection.release();
+
+      return updatedUser;
+    } catch (err) {
+      console.log(err);
+      err.statusCode = 500;
+      throw err;
+    }
+  }
 }
 
 export default Customer;
