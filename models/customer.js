@@ -94,6 +94,11 @@ class Customer {
         long,
         id,
       ]);
+      if (result.rowCount === 0) {
+        const error = new Error("Customer not found");
+        error.statusCode = 404;
+        throw error;
+      }
       const updatedUser = result.rows[0];
       connection.release();
 
