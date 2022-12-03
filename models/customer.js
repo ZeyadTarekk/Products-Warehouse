@@ -56,6 +56,20 @@ class Customer {
     return result.rows[0];
   }
 
+  static async deleteCustomer(customerId) {
+    const sql = "DELETE FROM customers WHERE id = ($1);";
+    const connection = await Client.connect();
+    const result = await connection.query(sql, [customerId]);
+    console.log(result);
+    if (result.rowCount === 0) {
+      const error = new Error("Customer not found");
+      error.statusCode = 404;
+      throw error;
+    }
+    connection.release();
+    return result.rows[0];
+  }
+
   static async getCustomers() {
     const sql = "SELECT * FROM customers;";
     const connection = await Client.connect();

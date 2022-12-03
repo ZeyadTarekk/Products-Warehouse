@@ -28,4 +28,10 @@ customerRouter.get(
   customerController.getCustomers
 );
 
+customerRouter.delete(
+  "/customer/:customerId",
+  verifyAuthToken,
+  customerController.deleteCustomer
+);
+
 export default customerRouter;
