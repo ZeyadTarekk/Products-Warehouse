@@ -1,11 +1,9 @@
 import * as dotenv from "dotenv";
-import { Pool } from "pg";
+import Pool from "pg-pool";
 
 dotenv.config();
 
 let Client;
-
-console.log(process.env.ENV);
 
 if (process.env.ENV.trim() === "test") {
   console.log("Entered test");
