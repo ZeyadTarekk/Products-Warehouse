@@ -12,7 +12,7 @@ const createdProduct = async (req, res) => {
 
     const { name, description, price } = req.body;
     const product = new Product(name, description, price);
-    const createdProduct = await product.save();
+    const createdProduct = await product.save(req?.files?.images);
     res.status(200).json(createdProduct);
   } catch (err) {
     console.log(err.message);

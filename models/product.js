@@ -11,7 +11,7 @@ class Product {
     this.price = price;
   }
 
-  async save() {
+  async save(images) {
     try {
       const sql =
         "INSERT INTO products(name,description,price) VALUES (($1),($2),($3)) RETURNING *;";
@@ -23,6 +23,15 @@ class Product {
       ]);
 
       const createdProduct = result.rows[0];
+      if (images) {
+        let imagesQuery = "";
+        images.forEach((image) => {
+          imagesQuery += `INSERT INTO products_image(product_id,url,is_default) VALUES (${createdProduct.id}, '${image.path}',false);`;
+        });
+        console.log(imagesQuery);
+        const imagesResult = await connection.query(imagesQuery);
+        console.log(imagesQuery);
+      }
       connection.release();
 
       return createdProduct;
