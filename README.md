@@ -67,7 +67,7 @@ npm install
 1. **_Running on development mode_**
 
 ```sh
-npm run start
+npm run dev
 ```
 
 
