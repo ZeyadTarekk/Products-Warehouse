@@ -64,7 +64,13 @@ npm install
 
 ### Running <a name = "running"></a>
 
-1. **_Running on development mode_**
+1. **_Running migrations_**
+
+```sh
+npm run migrateup
+```
+
+2. **_Running on development mode_**
 
 ```sh
 npm run dev
