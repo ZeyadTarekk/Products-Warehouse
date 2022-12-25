@@ -64,7 +64,7 @@ npm install
 
 ### Running <a name = "running"></a>
 
-1. **_Running migrations_**
+1. **_Running migrations up_**
 
 ```sh
 npm run migrateup
@@ -74,6 +74,11 @@ npm run migrateup
 
 ```sh
 npm run dev
+```
+1. **_Running migrations down_**
+
+```sh
+npm run migratedown
 ```
 
 
