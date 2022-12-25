@@ -8,7 +8,8 @@
     "test": "npm run test",
     "migrateup": "db-migrate up -c 5",
     "migratedown": "db-migrate down -c 5",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
